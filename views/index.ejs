@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link href="assets/style.css" rel="stylesheet" type="text/css">
+		<!-- BOOTSTRAP CSS FILES -->
+		<link rel="stylesheet" href="bootstrap-3.3-1.7-dist/css/bootstrap.min.css">
+		<!-- BOOTSTRAP JQUERY FILES -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<!-- BOOTSTRAP JS FILES -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+			<title>Shortner App</title>
+	</head>
+	<body>
+		<h2> Escreva aqui um link para que possamos gerar um link encurtado:</h2>
+		<form>
+			<input type="text" name="url">
+			<button type="submit">Clique</button>
+		</form>
+	</body>
+	<script>
+		$(document).ready(function(){
+			$('form').submit(function(){
+				var url = $('input').val();
+				var object = {
+					url: url
+				};
+				//console.log(url);
+				$.ajax({
+					type: 'POST',
+					url: '/',
+					data: object,
+					success: function (data){
+						console.log(data);
+					}
+				});
+			});
+
+		});
+	</script>
+</html>
